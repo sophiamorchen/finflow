@@ -1,0 +1,9 @@
+# Ce que fait .dockerignore : Quand je lance docker build ou docker compose up --build : 
+# = Docker commence par copier TOUT le contenu du dossier vers son moteur. C'est le contexte de build.
+# Déf — contexte de build : TOUS les fichiers envoyés au moteur Docker avant la construction, et dans lesquels les instructions COPY iront puiser.
+# .dockerignore retire des fichiers de cet envoi.
+
+node_modules
+.git
+.env
+*.md

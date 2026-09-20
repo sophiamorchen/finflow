@@ -1,9 +1,37 @@
 services: 
+  proxy: 
+    image: nginx:1.27-alpine     # version figée
+    restart: unless-stopped
+    ports: 
+      - "8000:80"
+    volumes: 
+      - ./nginx.conf:/etc/nginx/nginx.conf # mon fichier -> l'emplacement attendu par nginx
+    depends_on:
+      - api
+  api:
+    build: .
+    restart: unless-stopped     # redémarre sauf si arrêté volontairement
+    depends_on:
+      db:              # démarre db avant api
+        condition: service_healthy    # attendre que db soit déclaré sain
   db: 
     image: postgres:16-alpine
+    restart: unless-stopped
     environment: 
-      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRE_PASSWORD: ${POSTGRE_PASSWORD}
     volumes:
-      - donnees-db:/var/lib/postgresql/data
+      - donnees-db:/var/lib/POSTGREql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U POSTGRE"] # commande de vérification
+      interval: 5s      # relancer toutes les 5 secondes
+      timeout: 3s       # echec si pas de réponse en 3 secondes
+      retries: 5        # 5 echecs de suite = conteneur malade
+  cache:                                      # nom imposé dans le cours
+    image: redis:7-alpine                     # version figée, comme dans POSTGRE
+    restart: unless-stopped
+    command: redis-server --appendonly yes    # Redis écrit dans data
+    volumes:
+      - donnees-cache:/data                   # volume nommé -> /data
 volumes: 
   donnees-db:  
+  donnees-cache:
