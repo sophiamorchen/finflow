@@ -9,13 +9,13 @@ API de traitement de transactions, conteneurisées avec Docker
 |---------|-----------------------|----------------|
 | Proxy   | Nginx, point d'entrée | oui, port 8000 |
 | api     | API Node.js           |      non       |
-| db      | POSTGREQL 16         |      non       |
+| db      | PostgreSQL 16         |      non       |
 | cache   | Redis 7               |      non       |   
 
 ## Démarrage
 
 1. Cloner le dépôt
-    git clone <url du dépôt>
+    git clone <https://github.com/sophiamorchen/finflow.git>
     cd finflow
 
 2. Créer le fichier d'environnement
