@@ -23,24 +23,24 @@ cd finflow
 2. Créer le fichier d'environnement
 ```bash
 cp .env.example .env
-Puis remplir `POSTGRE_PASSWORD` avec une valeur de votre choix
 ```
+Puis remplir `POSTGRE_PASSWORD` avec une valeur de votre choix
 
 3. Lancer
 ```bash
 docker compose up -d
-L'API est accessible sur http://localhost:8000
 ```
+L'API est accessible sur http://localhost:8000
 
 ## Arrêter
 ```bash
 docker compose down
+```
 
 Les données de POSTGRESQL et Redis sont conservées dans des volumes nommés.
 Pour les supprimer également : `docker compose down -v`
-```
 
 ## Prérequis
-```bash
+
 Docker Desktop installé. Aucune installation Node, POSTGRESQL, Redis nécessaire
-```
+
