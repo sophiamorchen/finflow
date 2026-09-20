@@ -16,7 +16,7 @@ API de traitement de transactions, conteneurisées avec Docker
 
 1. Cloner le dépôt
 ```bash
-git clone <https://github.com/sophiamorchen/finflow.git>
+git clone https://github.com/sophiamorchen/finflow.git
 cd finflow
 ```
 
