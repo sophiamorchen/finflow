@@ -15,19 +15,21 @@ API de traitement de transactions, conteneurisées avec Docker
 ## Démarrage
 
 1. Cloner le dépôt
-    git clone <https://github.com/sophiamorchen/finflow.git>
-    cd finflow
+```bash
+git clone <https://github.com/sophiamorchen/finflow.git>
+cd finflow
+```
 
 2. Créer le fichier d'environnement
-    cp .env.example .env
+cp .env.example .env
 Puis remplir `POSTGRE_PASSWORD` avec une valeur de votre choix
 
 3. Lancer
-    docker compose up -d
+docker compose up -d
 L'API est accessible sur http://localhost:8000
 
 ## Arrêter
-    docker compose down
+docker compose down
 
 Les données de POSTGRESQL et Redis sont conservées dans des volumes nommés.
 Pour les supprimer également : `docker compose down -v`
